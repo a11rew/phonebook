@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import store from "../../store";
 import { MdDelete, MdOutlineModeEditOutline } from "react-icons/md";
 
 interface Props {
@@ -9,10 +10,12 @@ interface Props {
 }
 
 const ContactCard = ({ name, number, id, photo }: Props) => {
-  const nav = useNavigate();
+  const navigate = useNavigate();
   return (
     <tr
-      onClick={() => nav(`/contact/${id}`)}
+      onClick={() => {
+        navigate(`/contact/${id}`);
+      }}
       role="button"
       className="hover:bg-[#f5f5f5] group relative"
     >
@@ -23,13 +26,29 @@ const ContactCard = ({ name, number, id, photo }: Props) => {
       <td>{number}</td>
 
       <div className="group-hover:visible invisible absolute top-0 right-4 h-full gap-3  flex items-center">
-        <button className="h-full ">
+        <button
+          className="h-full"
+          onClick={(e) => {
+            // Prevent parent handlers from firing
+            e.stopPropagation();
+            navigate(`/contact/${id}/edit`);
+          }}
+        >
           <MdOutlineModeEditOutline
             className="text-[#00000051] hover:text-black"
             size={24}
           />
         </button>
-        <button>
+        <button
+          onClick={(e) => {
+            // Prevent parent handlers from firing
+            e.stopPropagation();
+            if (confirm("Delete contact?")) {
+              store.removeContact(id);
+            }
+          }}
+          className="z-10"
+        >
           <MdDelete className="text-[#00000051] hover:text-black" size={24} />
         </button>
       </div>
