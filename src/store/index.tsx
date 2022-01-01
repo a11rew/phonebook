@@ -1,4 +1,5 @@
 import { action, computed, makeObservable, observable } from "mobx";
+import faker from "faker";
 
 interface Contact {
   name: string;
@@ -6,24 +7,22 @@ interface Contact {
   id: string;
 }
 
+const generatePlaceholderData = (count: number): Contact[] => {
+  const data: Contact[] = [];
+
+  for (let i = 0; i < count; i++) {
+    data.push({
+      name: faker.name.findName(),
+      number: faker.phone.phoneNumber("02# ### ####"),
+      id: `${i}`,
+    });
+  }
+
+  return data;
+};
+
 class Store {
-  contacts: Contact[] = [
-    {
-      name: "Andrew Glago",
-      number: "32409174342",
-      id: "234",
-    },
-    {
-      name: "Joy Ndukwe",
-      number: "32409174342",
-      id: "234",
-    },
-    {
-      name: "Lily Dov",
-      number: "32409174342",
-      id: "234",
-    },
-  ];
+  contacts: Contact[] = generatePlaceholderData(23);
 
   constructor() {
     makeObservable(this, {

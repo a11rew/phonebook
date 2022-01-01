@@ -4,15 +4,13 @@ interface Props {}
 
 const Header = (props: Props) => {
   return (
-    <header>
+    <header className="sticky top-0 bg-white z-10">
       <div className="flex items-center justify-between">
         <div className="flex px-6 py-3 items-center gap-2">
           <img src={Logo} className="w-10 h-10" />
           <span className="text-[#5f6368] text-xl">Phonebook</span>
         </div>
-        <div className="">
-          <SearchBox />
-        </div>
+        <SearchBox />
         <div className="px-6 h-full items-center">
           <img
             src={
