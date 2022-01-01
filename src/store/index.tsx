@@ -1,5 +1,6 @@
 import { action, computed, makeObservable, observable } from "mobx";
 import faker from "faker";
+import toast from "react-hot-toast";
 
 interface Contact {
   name: string;
@@ -32,6 +33,7 @@ class Store {
       contacts: observable,
       addContact: action,
       removeContact: action,
+      updateContact: action,
       contactCount: computed,
     });
   }
@@ -51,8 +53,8 @@ class Store {
   updateContact = (id: string, payload: Contact) => {
     // Find index
     let index = this.contacts.findIndex((e) => e.id === id);
-
     this.contacts[index] = payload;
+    toast.success("Contact updated");
   };
 
   get contactCount() {

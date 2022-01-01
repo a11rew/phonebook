@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { observer } from "mobx-react";
+import { useState } from "react";
 import { MdOutlinePhone, MdPersonOutline } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import store from "../../store";
@@ -64,4 +65,4 @@ const ContactEdit = (props: Props) => {
   );
 };
 
-export default ContactEdit;
+export default observer(ContactEdit);
