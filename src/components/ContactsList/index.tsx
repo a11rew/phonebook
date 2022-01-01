@@ -25,8 +25,10 @@ const ContactsList = (props: Props) => {
           {store.contactItems.map((contact) => (
             <ContactCard
               key={contact.id}
+              id={contact.id}
               name={contact.name}
               number={contact.number}
+              photo={contact.photo}
             />
           ))}
         </tbody>
