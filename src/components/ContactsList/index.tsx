@@ -10,14 +10,16 @@ const ContactsList = (props: Props) => {
       <table className="w-full border-separate">
         <thead className="sticky top-16 z-10 bg-white border-b">
           <tr>
-            <th className="w-1/2 text-left font-normal py-3 border-b">Name</th>
-            <th className="w-1/2 text-left font-normal py-3 border-b">
+            <th className="w-1/2 text-left font-normal py-3 border-b px-4">
+              Name
+            </th>
+            <th className="w-1/2 text-left font-normal py-3 border-b px-4">
               Phone Number
             </th>
           </tr>
         </thead>
         <div className="my-2 mt-4">
-          <p className="uppercase text-xs font-medium opacity-[0.56]">
+          <p className="uppercase text-xs font-medium opacity-[0.56] px-4">
             Contacts ({store.contactCount})
           </p>
         </div>

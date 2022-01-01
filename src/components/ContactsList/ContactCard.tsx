@@ -19,11 +19,11 @@ const ContactCard = ({ name, number, id, photo }: Props) => {
       role="button"
       className="hover:bg-[#f5f5f5] group relative"
     >
-      <td className="flex items-center gap-5">
+      <td className="flex items-center gap-5 px-4">
         <img className="w-9 h-9 rounded-full" src={photo} />
         <span className="py-4">{name}</span>
       </td>
-      <td>{number}</td>
+      <td className="px-4">{number}</td>
 
       <div className="group-hover:visible invisible absolute top-0 right-4 h-full gap-3  flex items-center">
         <button

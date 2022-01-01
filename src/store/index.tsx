@@ -67,6 +67,7 @@ class Store {
 
   removeContact = (id: string) => {
     this.contacts = this.contacts.filter((e) => e.id !== id);
+    toast.success("Contact deleted");
   };
 
   findContact = (id: string) => {
