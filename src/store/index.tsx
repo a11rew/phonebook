@@ -1,4 +1,12 @@
-import { action, computed, makeObservable, observable } from "mobx";
+import {
+  action,
+  autorun,
+  computed,
+  makeObservable,
+  observable,
+  set,
+  toJS,
+} from "mobx";
 import faker from "faker";
 import toast from "react-hot-toast";
 
@@ -25,8 +33,20 @@ const generatePlaceholderData = (count: number): Contact[] => {
   return data;
 };
 
+const saveStore = (_this: any) => {
+  const storedJson = localStorage.getItem("phonebookStore");
+  if (storedJson) {
+    set(_this, JSON.parse(storedJson));
+  }
+
+  autorun(() => {
+    const value = toJS(_this);
+    localStorage.setItem("phonebookStore", JSON.stringify(value));
+  });
+};
+
 class Store {
-  contacts: Contact[] = generatePlaceholderData(23);
+  public contacts;
 
   constructor() {
     makeObservable(this, {
@@ -36,6 +56,9 @@ class Store {
       updateContact: action,
       contactCount: computed,
     });
+
+    this.contacts = generatePlaceholderData(23);
+    saveStore(this);
   }
 
   addContact = (contact: Contact) => {
@@ -59,10 +82,6 @@ class Store {
 
   get contactCount() {
     return this.contacts.length;
-  }
-
-  get contactItems() {
-    return this.contacts;
   }
 }
 

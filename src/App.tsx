@@ -12,13 +12,15 @@ const App = () => {
     <BrowserRouter>
       <Toaster position="top-center" />
       <Header />
-      <Routes>
-        <Route path="/" element={<ContactsList />} />
-        <Route path="/contact/:id" element={<ContactView />}>
-          <Route path="/contact/:id" element={<PhoneView />} />
-          <Route path="/contact/:id/edit" element={<ContactEdit />} />
-        </Route>
-      </Routes>
+      <div className="max-w-[1440px] m-auto">
+        <Routes>
+          <Route path="/" element={<ContactsList />} />
+          <Route path="/contact/:id" element={<ContactView />}>
+            <Route path="/contact/:id" element={<PhoneView />} />
+            <Route path="/contact/:id/edit" element={<ContactEdit />} />
+          </Route>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 };

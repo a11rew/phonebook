@@ -5,8 +5,8 @@ interface Props {}
 const Header = (props: Props) => {
   return (
     <header className="sticky top-0 bg-white z-10">
-      <div className="flex items-center justify-between">
-        <div className="flex px-6 py-3 items-center gap-2">
+      <div className="flex items-center justify-between max-w-[1440px] m-auto">
+        <div className="flex px-2 py-3 items-center gap-3">
           <img src={Logo} className="w-10 h-10" />
           <span className="text-[#5f6368] text-xl">Phonebook</span>
         </div>
