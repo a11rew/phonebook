@@ -8,6 +8,7 @@ import PhoneView from "./components/ContactView/PhoneView";
 import Header from "./components/Header";
 
 import AddIcon from "./assets/add.png";
+import AddContact from "./components/AddContact";
 
 const App = () => {
   return (
@@ -21,8 +22,10 @@ const App = () => {
             <Route path="/contact/:id" element={<PhoneView />} />
             <Route path="/contact/:id/edit" element={<ContactEdit />} />
           </Route>
+          <Route path="/add" element={<AddContact />} />
         </Routes>
       </div>
+      <FAB />
     </BrowserRouter>
   );
 };
@@ -33,7 +36,7 @@ const FAB = () => {
   return (
     <button
       onClick={() => navigate("/add")}
-      className="rounded-full md:hidden p-4 bg-white fixed bottom-5 right-5 shadow-xl z-50 hover:shadow-md"
+      className="rounded-full md:hidden p-4 bg-white fixed bottom-10 right-5 shadow-xl z-50 hover:shadow-md"
     >
       <img src={AddIcon} className="w-9 h-9 rounded-full" />
     </button>

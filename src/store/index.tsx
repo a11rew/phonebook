@@ -57,12 +57,18 @@ class Store {
       contactCount: computed,
     });
 
-    this.contacts = generatePlaceholderData(23);
+    this.contacts = generatePlaceholderData(4);
     saveStore(this);
   }
 
-  addContact = (contact: Contact) => {
-    this.contacts.push(contact);
+  addContact = ({ name, number }: { name: string; number: string }) => {
+    this.contacts.push({
+      name,
+      number,
+      photo: `https://ui-avatars.com/api/?name=${name}&length=1&background=random&size=262`,
+      id: `${this.contacts.length + 1}`,
+    });
+    toast.success("Contact added");
   };
 
   removeContact = (id: string) => {
