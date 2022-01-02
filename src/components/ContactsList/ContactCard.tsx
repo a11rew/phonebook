@@ -25,7 +25,7 @@ const ContactCard = ({ name, number, id, photo }: Props) => {
       </td>
       <td className="px-4">{number}</td>
 
-      <div className="group-hover:visible invisible absolute top-0 right-4 h-full gap-3  flex items-center">
+      <div className="hidden group-hover:visible invisible absolute top-0 right-4 h-full gap-3 sm:flex items-center">
         <button
           className="h-full"
           onClick={(e) => {

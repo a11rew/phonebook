@@ -13,19 +13,21 @@ const ContactView = (props: Props) => {
 
   return (
     <div className="p-8">
-      <div className="flex justify-between">
-        <div className="flex gap-8">
-          <div className="pt-2">
-            <button onClick={() => navigate(-1)}>
-              <IoMdArrowBack size={28} />
-            </button>
+      <div className="flex justify-between flex-col sm:flex-row">
+        <div className="flex gap-8 flex-col sm:flex-row">
+          <div className="flex gap-8">
+            <div className="pt-2">
+              <button onClick={() => navigate(-1)}>
+                <IoMdArrowBack size={28} />
+              </button>
+            </div>
+            <img className="rounded-full w-44 h-44" src={contact?.photo} />
           </div>
-          <img className="rounded-full w-44 h-44" src={contact?.photo} />
-          <div className="flex items-center ml-2">
+          <div className="flex items-center justify-center ml-2 my-4">
             <h1 className="text-3xl">{contact?.name}</h1>
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 justify-center">
           {match && (
             <div className="flex justify-end items-end">
               <button
