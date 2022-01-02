@@ -1,11 +1,13 @@
 import { observer } from "mobx-react";
 import { Toaster } from "react-hot-toast";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import ContactsList from "./components/ContactsList";
 import ContactView from "./components/ContactView";
 import ContactEdit from "./components/ContactView/ContactEdit";
 import PhoneView from "./components/ContactView/PhoneView";
 import Header from "./components/Header";
+
+import AddIcon from "./assets/add.png";
 
 const App = () => {
   return (
@@ -22,6 +24,19 @@ const App = () => {
         </Routes>
       </div>
     </BrowserRouter>
+  );
+};
+
+const FAB = () => {
+  const navigate = useNavigate();
+
+  return (
+    <button
+      onClick={() => navigate("/add")}
+      className="rounded-full md:hidden p-4 bg-white fixed bottom-5 right-5 shadow-xl z-50 hover:shadow-md"
+    >
+      <img src={AddIcon} className="w-9 h-9 rounded-full" />
+    </button>
   );
 };
 

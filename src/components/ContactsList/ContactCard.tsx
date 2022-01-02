@@ -47,7 +47,6 @@ const ContactCard = ({ name, number, id, photo }: Props) => {
               store.removeContact(id);
             }
           }}
-          className="z-10"
         >
           <MdDelete className="text-[#00000051] hover:text-black" size={24} />
         </button>
