@@ -61,7 +61,7 @@ class Store {
       filteredContacts: computed,
     });
 
-    this.contacts = generatePlaceholderData(4);
+    this.contacts = generatePlaceholderData(23);
     saveStore(this);
   }
 
@@ -100,9 +100,14 @@ class Store {
   }
 
   get filteredContacts() {
-    const filtered = this.contacts.filter((contact) =>
+    // FIlter
+    let filtered = this.contacts.filter((contact) =>
       contact.name.match(new RegExp(this.filterString, "i"))
     );
+
+    // Sort
+    filtered = filtered.sort((a, b) => (Number(a.id) < Number(b.id) ? 1 : -1));
+
     return filtered;
   }
 }
