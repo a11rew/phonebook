@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AddIcon from "../assets/add.png";
 import Logo from "../assets/logo.png";
 import SearchBox from "./SearchBox";
@@ -10,10 +10,10 @@ const Header = (props: Props) => {
   return (
     <header className="sticky top-0 bg-white z-10">
       <div className="flex flex-col sm:flex-row sm:items-center pr-4 justify-between max-w-[1440px] m-auto">
-        <div className="flex px-8 py-3 items-center gap-3">
+        <Link to={"/"} className="flex px-8 py-3 items-center gap-3">
           <img src={Logo} className="w-10 h-10" />
           <span className="text-[#5f6368] text-xl">Phonebook</span>
-        </div>
+        </Link>
         <SearchBox />
         <button
           onClick={() => navigate("/add")}

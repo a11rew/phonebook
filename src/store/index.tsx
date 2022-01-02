@@ -47,14 +47,18 @@ const saveStore = (_this: any) => {
 
 class Store {
   public contacts;
+  public filterString = "";
 
   constructor() {
     makeObservable(this, {
       contacts: observable,
+      filterString: observable,
       addContact: action,
       removeContact: action,
       updateContact: action,
+      updateFilter: action,
       contactCount: computed,
+      filteredContacts: computed,
     });
 
     this.contacts = generatePlaceholderData(4);
@@ -87,8 +91,19 @@ class Store {
     toast.success("Contact updated");
   };
 
+  updateFilter = (filter: string) => {
+    this.filterString = filter;
+  };
+
   get contactCount() {
     return this.contacts.length;
+  }
+
+  get filteredContacts() {
+    const filtered = this.contacts.filter((contact) =>
+      contact.name.match(new RegExp(this.filterString, "i"))
+    );
+    return filtered;
   }
 }
 

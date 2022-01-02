@@ -24,7 +24,7 @@ const ContactsList = (props: Props) => {
           </p>
         </div>
         <tbody>
-          {store.contacts.map((contact) => (
+          {store.filteredContacts.map((contact) => (
             <ContactCard
               key={contact.id}
               id={contact.id}
